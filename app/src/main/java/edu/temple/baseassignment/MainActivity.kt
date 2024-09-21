@@ -28,6 +28,11 @@ class MainActivity : AppCompatActivity() {
         editTextPassword2 = findViewById(R.id.editTextTextPassword2)
         myButton = findViewById(R.id.saveInfo)
 
+        myButton.setOnClickListener{
+            displayMessageTextView.text = "Welcome To The App, ${nameEditText.text}"
+
+        }
+
 
     }
 }
