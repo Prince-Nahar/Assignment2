@@ -43,6 +43,43 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun validateInput(){  // validate the user input
+        var isValid = true
+
+        nameEditText.setError(null)
+        editTextEmailAddress.setError(null)
+        editTextPassword.setError(null)
+        editTextPassword2.setError(null)
+
+        if (nameEditText.text.toString().isEmpty()) {
+            nameEditText.setError("Name not entered")
+            isValid = false
+        }
+
+        if (editTextEmailAddress.text.toString().isEmpty()) {
+            editTextEmailAddress.setError("Email not entered")
+            isValid = false
+        }
+
+        if (editTextPassword.text.toString().isEmpty()) {
+            editTextPassword.setError("Password not entered")
+            isValid = false
+        }
+
+
+        if (editTextPassword.text.toString() != editTextPassword2.text.toString()) {
+            editTextPassword.setError("Passwords do not match")
+            editTextPassword2.setError("Passwords do not match")
+            isValid = false
+        }
+
+        if (spinner.selectedItem.toString() == "Please select your program") {
+            Toast.makeText(this, "Please select a valid program", Toast.LENGTH_SHORT).show()
+            isValid = false
+        }
+
+        if (isValid) {
+            displayMessageTextView.text = "Welcome To The App, ${nameEditText.text}."
+        }
 
     }
 }
