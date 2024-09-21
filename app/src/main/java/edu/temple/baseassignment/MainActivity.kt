@@ -1,8 +1,10 @@
 package edu.temple.baseassignment
 
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -16,7 +18,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var myButton: Button
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -28,9 +29,14 @@ class MainActivity : AppCompatActivity() {
         editTextPassword2 = findViewById(R.id.editTextTextPassword2)
         myButton = findViewById(R.id.saveInfo)
 
-        myButton.setOnClickListener{
-            displayMessageTextView.text = "Welcome To The App, ${nameEditText.text}"
+        val spinner = findViewById<Spinner>(R.id.programField)
+        val program = arrayOf("Please select your program", "Information Science", "Computer Science", "Math and CS", "Data Science", "Other")
+        val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, program)
 
+        spinner.adapter = adapter
+
+        myButton.setOnClickListener {
+            displayMessageTextView.text = "Welcome To The App, ${nameEditText.text}"
         }
 
 
